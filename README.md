@@ -23,13 +23,13 @@ After installation, the executable file will be located in `$GOPATH/bin` or `$GO
 ### Basic Usage
 
 ```bash
-htg -input=tree.txt
+htd -input=tree.txt
 ```
 
 Shortcut:
 
 ```bash
-htg -i=tree.txt
+htd -i=tree.txt
 ```
 
 `tree.txt` is a text file that describes the directory and file structure you want to create.
@@ -81,7 +81,7 @@ project/
 #### Running the Program
 
 ```bash
-htg -i=tree.txt -l=go -p
+htd -i=tree.txt -l=go -p
 ```
 
 #### Result
@@ -105,13 +105,13 @@ htg -i=tree.txt -l=go -p
 ### Viewing Help
 
 ```bash
-htg -h
+htd -h
 ```
 
 or
 
 ```bash
-htg --help
+htd --help
 ```
 
 ## Notes

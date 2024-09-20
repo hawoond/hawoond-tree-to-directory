@@ -63,3 +63,52 @@ func GenerateStructure(inputFile string, indentSize int, language string, addPac
 
 	return nil
 }
+
+func SaveStructureToFile(rootDir string, outputFile string, indentSize int, messages map[string]string) error {
+	file, err := os.Create(outputFile)
+	if err != nil {
+		return fmt.Errorf(messages["write_error"], err)
+	}
+	defer file.Close()
+
+	writer := bufio.NewWriter(file)
+	defer writer.Flush()
+
+	err = filepath.Walk(rootDir, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+
+		if path == rootDir {
+			return nil
+		}
+
+		relPath, err := filepath.Rel(rootDir, path)
+		if err != nil {
+			return err
+		}
+
+		depth := len(strings.Split(relPath, string(os.PathSeparator))) - 1
+
+		indent := strings.Repeat(strings.Repeat(" ", indentSize), depth)
+
+		name := filepath.Base(path)
+		if info.IsDir() {
+			name += "/"
+		}
+
+		line := fmt.Sprintf("%s%s\n", indent, name)
+		_, err = writer.WriteString(line)
+		if err != nil {
+			return err
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		return fmt.Errorf(messages["write_error"], err)
+	}
+
+	return nil
+}

@@ -133,4 +133,4 @@ htg --help
 
 ## License
 
-This project is licensed under the **Apache License 2.0**. For more details, see the `LICENSE` file.
+This project is licensed under the **MIT License**. For more details, see the `LICENSE` file.

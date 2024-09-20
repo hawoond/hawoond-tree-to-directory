@@ -91,13 +91,10 @@ htd -i=tree.txt
 
 ```
 project/
-    cmd/
-        app/
-            main.go
-    pkg/
-        utils/
-            helper.go
-    README.md
+├── cmd/
+│   └── app/
+│       └── main.go
+└── README.md
 ```
 
 ##### Running the Program

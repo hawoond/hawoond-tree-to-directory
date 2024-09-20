@@ -23,13 +23,13 @@ go install github.com/hawoond/hawoond-tree-to-directory/cmd/htd@latest
 ### 기본 사용법
 
 ```bash
-htg -input=tree.txt
+htd -input=tree.txt
 ```
 
 축약형:
 
 ```bash
-htg -i=tree.txt
+htd -i=tree.txt
 ```
 
 `tree.txt`는 생성하고자 하는 디렉토리 및 파일 구조를 텍스트로 표현한 파일이다.
@@ -81,7 +81,7 @@ project/
 #### 프로그램 실행
 
 ```bash
-htg -i=tree.txt -l=go -p
+htd -i=tree.txt -l=go -p
 ```
 
 #### 결과
@@ -105,13 +105,13 @@ htg -i=tree.txt -l=go -p
 ### 도움말 보기
 
 ```bash
-htg -h
+htd -h
 ```
 
 또는
 
 ```bash
-htg --help
+htd --help
 ```
 
 ## 참고 사항

@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/hawoond/hawoond-tree-generator/internal/flags"
-	"github.com/hawoond/hawoond-tree-generator/internal/generator"
-	"github.com/hawoond/hawoond-tree-generator/internal/i18n"
-	"github.com/hawoond/hawoond-tree-generator/internal/util"
+	"github.com/hawoond/hawoond-tree-to-directory/internal/flags"
+	"github.com/hawoond/hawoond-tree-to-directory/internal/generator"
+	"github.com/hawoond/hawoond-tree-to-directory/internal/i18n"
+	"github.com/hawoond/hawoond-tree-to-directory/internal/util"
 )
 
 func main() {

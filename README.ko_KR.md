@@ -1,4 +1,4 @@
-# hawoond Tree Generator
+# hawoond Tree to Directory
 
 텍스트 파일로 정의된 디렉토리 구조를 실제 폴더와 파일로 생성
 
@@ -13,7 +13,7 @@ Go 1.16 이상이 필요하다.
 ### `go install`을 통한 설치
 
 ```bash
-go install github.com/hawoond/hawoond-tree-generator/cmd/htg@latest
+go install github.com/hawoond/hawoond-tree-to-directory/cmd/htd@latest
 ```
 
 설치 후, 실행 파일은 `$GOPATH/bin` 또는 `$GOBIN`에 생성된다.

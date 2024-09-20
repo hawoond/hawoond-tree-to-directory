@@ -1,4 +1,4 @@
-# hawoond Tree Generator
+# hawoond Tree to Directory
 
 Generate actual folders and files from a directory structure defined in a text file.
 
@@ -13,7 +13,7 @@ Requires Go 1.16 or higher.
 ### Installation via `go install`
 
 ```bash
-go install github.com/hawoond/hawoond-tree-generator/cmd/htg@latest
+go install github.com/hawoond/hawoond-tree-to-directory/cmd/htd@latest
 ```
 
 After installation, the executable file will be located in `$GOPATH/bin` or `$GOBIN`.

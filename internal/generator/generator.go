@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/hawoond/hawoond-tree-generator/internal/util"
+	"github.com/hawoond/hawoond-tree-to-directory/internal/util"
 )
 
 func GenerateStructure(inputFile string, indentSize int, language string, addPackage bool, messages map[string]string) error {

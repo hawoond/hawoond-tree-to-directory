@@ -2,8 +2,8 @@ package i18n
 
 var Messages = map[string]map[string]string{
 	"en": {
-		"usage":            "Usage: generate-structure -input=FILE_PATH [-indent=INDENT_SIZE] [-language=LANGUAGE] [--add-package]",
-		"reverse_usage":    "Usage: generate-structure -reverse -input=DIR_PATH -output=OUTPUT_FILE [-indent=INDENT_SIZE]",
+		"usage":            "Usage: htd -input=FILE_PATH [-indent=INDENT_SIZE] [-language=LANGUAGE] [--add-package]",
+		"reverse_usage":    "Usage: htd -reverse -input=DIR_PATH -output=OUTPUT_FILE [-indent=INDENT_SIZE]",
 		"input_desc":       "Specify the path to the structure file or directory (-input, -i)",
 		"output_desc":      "Specify the path to the output file (-output, -o)",
 		"indent_desc":      "Specify the indent size (default: 4) (-indent, -n)",
@@ -15,10 +15,12 @@ var Messages = map[string]map[string]string{
 		"file_create_err":  "Error creating file: %v",
 		"read_error":       "Error reading structure file: %v",
 		"write_error":      "Error writing to output file: %v",
+		"include_desc":     "Specify patterns of files/directories to include, separated by commas (-include, -I)",
+		"exclude_desc":     "Specify patterns of files/directories to exclude, separated by commas (-exclude, -E)",
 	},
 	"ko": {
-		"usage":            "사용법: generate-structure -input=파일경로 [-indent=들여쓰기 칸 수] [-language=언어] [--add-package]",
-		"reverse_usage":    "사용법: generate-structure -reverse -input=디렉토리경로 -output=출력파일 [-indent=들여쓰기 칸 수]",
+		"usage":            "사용법: htd -input=파일경로 [-indent=들여쓰기 칸 수] [-language=언어] [--add-package]",
+		"reverse_usage":    "사용법: htd -reverse -input=디렉토리경로 -output=출력파일 [-indent=들여쓰기 칸 수]",
 		"input_desc":       "구조 파일 또는 디렉토리의 경로를 지정합니다 (-input, -i)",
 		"output_desc":      "출력 파일의 경로를 지정합니다 (-output, -o)",
 		"indent_desc":      "들여쓰기 칸 수를 지정합니다 (기본값: 4) (-indent, -n)",
@@ -30,5 +32,7 @@ var Messages = map[string]map[string]string{
 		"file_create_err":  "파일을 생성하는 중 오류 발생: %v",
 		"read_error":       "구조 파일을 읽는 중 오류 발생: %v",
 		"write_error":      "출력 파일에 쓰는 중 오류 발생: %v",
+		"include_desc":     "포함할 파일/디렉토리 패턴을 콤마로 구분하여 지정합니다 (-include, -I)",
+		"exclude_desc":     "제외할 파일/디렉토리 패턴을 콤마로 구분하여 지정합니다 (-exclude, -E)",
 	},
 }

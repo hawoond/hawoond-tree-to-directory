@@ -10,8 +10,7 @@ import (
 	"github.com/hawoond/hawoond-tree-to-directory/internal/util"
 )
 
-func GenerateStructure(inputFile string, indentSize int, language string, addPackage bool, messages map[string]string) error {
-
+func GenerateStructure(inputFile string, indentSize int, language string, addPackage bool, includePatterns, excludePatterns []string, messages map[string]string) error {
 	file, err := os.Open(inputFile)
 	if err != nil {
 		return fmt.Errorf(messages["open_error"], err)
@@ -44,6 +43,10 @@ func GenerateStructure(inputFile string, indentSize int, language string, addPac
 
 		isDir := strings.HasSuffix(name, "/") || strings.HasSuffix(name, "\\")
 
+		if !util.ShouldInclude(fullPath, includePatterns, excludePatterns, isDir) {
+			continue
+		}
+
 		if isDir {
 			err = util.CreateDirectory(fullPath, os.ModePerm)
 			if err != nil {
@@ -64,7 +67,7 @@ func GenerateStructure(inputFile string, indentSize int, language string, addPac
 	return nil
 }
 
-func SaveStructureToFile(rootDir string, outputFile string, indentSize int, messages map[string]string) error {
+func SaveStructureToFile(rootDir string, outputFile string, indentSize int, includePatterns, excludePatterns []string, messages map[string]string) error {
 	file, err := os.Create(outputFile)
 	if err != nil {
 		return fmt.Errorf(messages["write_error"], err)
@@ -74,12 +77,22 @@ func SaveStructureToFile(rootDir string, outputFile string, indentSize int, mess
 	writer := bufio.NewWriter(file)
 	defer writer.Flush()
 
+	rootDirAbs, err := filepath.Abs(rootDir)
+	if err != nil {
+		return err
+	}
+
 	err = filepath.Walk(rootDir, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
 
-		if path == rootDir {
+		pathAbs, err := filepath.Abs(path)
+		if err != nil {
+			return err
+		}
+
+		if pathAbs == rootDirAbs {
 			return nil
 		}
 
@@ -88,12 +101,20 @@ func SaveStructureToFile(rootDir string, outputFile string, indentSize int, mess
 			return err
 		}
 
+		isDir := info.IsDir()
+		if !util.ShouldInclude(relPath, includePatterns, excludePatterns, isDir) {
+			if isDir {
+				return filepath.SkipDir
+			}
+			return nil
+		}
+
 		depth := len(strings.Split(relPath, string(os.PathSeparator))) - 1
 
 		indent := strings.Repeat(strings.Repeat(" ", indentSize), depth)
 
 		name := filepath.Base(path)
-		if info.IsDir() {
+		if isDir {
 			name += "/"
 		}
 

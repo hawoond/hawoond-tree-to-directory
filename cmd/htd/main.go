@@ -20,9 +20,17 @@ func main() {
 
 	config := flags.ParseFlags(messages)
 
-	err := generator.GenerateStructure(config.InputFile, config.IndentSize, config.Language, config.AddPackage, messages)
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
+	if config.Reverse {
+		err := generator.SaveStructureToFile(config.InputPath, config.OutputPath, config.IndentSize, config.Include, config.Exclude, messages)
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+	} else {
+		err := generator.GenerateStructure(config.InputPath, config.IndentSize, config.Language, config.AddPackage, config.Include, config.Exclude, messages)
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
 	}
 }
